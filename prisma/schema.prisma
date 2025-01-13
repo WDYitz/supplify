@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Stock {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      String
+
+  tags     Tags[]
+  products Product[]
+}
+
+model Tags {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  Stock   Stock? @relation(fields: [stockId], references: [id])
+  stockId Int?
+}
+
+model Product {
+  id             Int                @id @default(autoincrement())
+  name           String
+  qtyInStock     String             @map("qty_in_stock")
+  productCode    String             @map("product_code")
+  barcode        Int
+  tag            String
+  expirationDate DateTime           @map("expiration_date")
+  unitPrice      Decimal            @map("unit_price") @db.Decimal(10, 2)
+  classification ClassificationType
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+
+  Stock   Stock? @relation(fields: [stockId], references: [id])
+  stockId Int?
+}
+
+enum ClassificationType {
+  A
+  B
+  C
+}
