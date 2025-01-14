@@ -1,11 +1,9 @@
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
-import { LoginLeftSide } from "./_components/left-side";
-import { LoginRightSide } from "./_components/right-side";
+import { IsAuthenticated } from "@/services/authentication";
+import { LoginLeftSide } from "./_components/LoginLeftSide";
+import { LoginRightSide } from "./_components/LoginRightSide";
 
 const LoginPage = async () => {
-  const { userId } = await auth();
-  if (userId) redirect("/");
+  await IsAuthenticated({ redirectTo: "/" });
 
   return (
     <div className="grid h-full grid-cols-2 bg-[#030303]">

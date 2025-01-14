@@ -8,6 +8,7 @@ export const LoginRightSide = () => {
         alt="Supplify"
         fill
         className="object-cover w-full h-full"
+        loading="lazy"
       />
     </div>
   )
