@@ -1,7 +1,7 @@
+import { Providers } from "@/contexts/providers";
 import type { Metadata } from "next";
 import { Roboto_Condensed } from "next/font/google";
 import "../styles/globals.css";
-import { Providers } from "@/contexts/providers";
 
 const roboto = Roboto_Condensed({
   subsets: ['latin'],
