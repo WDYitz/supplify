@@ -1,28 +1,37 @@
-import SkeletonButtonLoading from "@/components/loginButtonSkeleton";
-import { Button } from "@/components/ui/button";
-import { ClerkLoaded, ClerkLoading, SignOutButton } from "@clerk/nextjs";
-import { auth } from "@clerk/nextjs/server";
-import { LogInIcon } from "lucide-react";
-import { redirect } from "next/navigation";
+import { AddNewStockButton } from "@/app/(dashboard)/_components/DashboardNewStockButton";
+import { Sidebar } from "@/components/Sidebar";
+import { IsUnauthenticated } from "@/services/authentication";
 
 const Dashboard = async () => {
-  const { userId } = await auth();
-  if (!userId) redirect("/login");
-  return (
-    <>
-      <ClerkLoaded>
-        <SignOutButton>
-          <Button variant="outline">
-            <LogInIcon />
-            Logout
-          </Button>
-        </SignOutButton>
-      </ClerkLoaded>
+  await IsUnauthenticated({ returnTo: "/login" });
 
-      <ClerkLoading>
-        <SkeletonButtonLoading />
-      </ClerkLoading>
-    </>
+  return (
+    <main className="w-full h-full flex">
+      <Sidebar.Root>
+        <Sidebar.Navigation />
+        <Sidebar.Actions>
+          <Sidebar.SignOut />
+        </Sidebar.Actions>
+      </Sidebar.Root>
+
+      <section className="flex flex-col w-full h-full bg-background px-14 py-8 space-y-12">
+        <div className="flex justify-between">
+          <div className="flex flex-col gap-2">
+            <h2 className="text-2xl">Dashboard</h2>
+            <p className="text-3xl font-light">Criar Novo Estoque</p>
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="text-2xl">Plano Gratuito</p>
+            <p className="text-end text-lg">0 / 3</p>
+          </div>
+        </div>
+        <div className="flex gap-6">
+          <AddNewStockButton />
+          <AddNewStockButton />
+          <AddNewStockButton />
+        </div>
+      </section>
+    </main>
   );
 }
 
