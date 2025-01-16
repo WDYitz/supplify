@@ -29,7 +29,7 @@ body {
     --accent: 240 4.8% 95.9%;
     --accent-foreground: 240 5.9% 10%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 84.2% 60.2% 0.7;
+    --destructive-foreground: 0 62.8% 30.6% 0.7;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
     --ring: 102 59% 44%; /* Adjusted for #55B02E */

@@ -20,18 +20,19 @@ model Stock {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   userId      String
+  tags        String
 
-  tags     Tags[]
   products Product[]
 }
 
-model Tags {
-  id   Int    @id @default(autoincrement())
-  name String
-
-  Stock   Stock? @relation(fields: [stockId], references: [id])
-  stockId Int?
-}
+/**
+ * model Tags {
+ * id   Int    @id @default(autoincrement())
+ * name String
+ * Stock   Stock? @relation(fields: [stockId], references: [id])
+ * stockId Int?
+ * }
+ */
 
 model Product {
   id             Int                @id @default(autoincrement())
