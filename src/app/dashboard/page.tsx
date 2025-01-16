@@ -14,11 +14,10 @@ const Dashboard = async () => {
         </Sidebar.Actions>
       </Sidebar.Root>
 
-      <section className="flex flex-col w-full h-full bg-background px-14 py-8 space-y-12">
+      <section className="flex flex-col w-full h-full bg-background px-14 py-8 space-y-4">
         <div className="flex justify-between">
-          <div className="flex flex-col gap-2">
-            <h2 className="text-2xl">Home</h2>
-            <p className="text-3xl font-light">Criar Novo Estoque</p>
+          <div className="flex flex-col">
+            <h2 className="text-2xl">Dashboard</h2>
           </div>
           <div className="flex flex-col gap-2">
             <p className="text-2xl">Plano Gratuito</p>
