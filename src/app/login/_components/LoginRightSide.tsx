@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export const LoginRightSide = () => {
   return (
-    <div className="relative grid grid-cols-1 bg-red-50 ml-[160px] h-full">
+    <div className="hidden lg:relative lg:grid lg:grid-cols-1 lg:ml-[160px] lg:h-full">
       <Image
         src="/background.jpg"
         alt="Supplify"

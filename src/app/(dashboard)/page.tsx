@@ -1,4 +1,4 @@
-import { AddNewStockButton } from "@/app/(dashboard)/_components/DashboardNewStockButton";
+import { StockForm } from "@/components/Forms/Stock";
 import { Sidebar } from "@/components/Sidebar";
 import { IsUnauthenticated } from "@/services/authentication";
 
@@ -17,7 +17,7 @@ const Dashboard = async () => {
       <section className="flex flex-col w-full h-full bg-background px-14 py-8 space-y-12">
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">
-            <h2 className="text-2xl">Dashboard</h2>
+            <h2 className="text-2xl">Home</h2>
             <p className="text-3xl font-light">Criar Novo Estoque</p>
           </div>
           <div className="flex flex-col gap-2">
@@ -25,14 +25,14 @@ const Dashboard = async () => {
             <p className="text-end text-lg">0 / 3</p>
           </div>
         </div>
+
         <div className="flex gap-6">
-          <AddNewStockButton />
-          <AddNewStockButton />
-          <AddNewStockButton />
+          <StockForm />
         </div>
       </section>
     </main>
   );
 }
+
 
 export default Dashboard;

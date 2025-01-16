@@ -6,7 +6,7 @@ const LoginPage = async () => {
   await IsAuthenticated({ redirectTo: "/" });
 
   return (
-    <div className="grid h-full grid-cols-2 bg-[#030303]">
+    <div className="grid grid-cols-1 h-full lg:grid-cols-2 bg-[#030303]">
       <LoginLeftSide />
       <LoginRightSide />
     </div >
