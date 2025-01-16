@@ -1,3 +1,4 @@
+import { TooltipProvider } from '@/components/ui/tooltip'
 import { ClerkProvider } from '@clerk/nextjs'
 import { dark } from "@clerk/themes"
 import type { ReactNode } from 'react'
@@ -9,7 +10,9 @@ interface ProvidersProps {
 export const Providers = ({ children }: ProvidersProps) => {
   return (
     <ClerkProvider appearance={{ baseTheme: dark }}>
-      {children}
+      <TooltipProvider>
+        {children}
+      </TooltipProvider>
     </ClerkProvider>
   )
 }
