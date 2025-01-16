@@ -5,5 +5,5 @@ export const addNewStockSchema = z.object({
   description: z.string()
     .min(10, { message: "A descrição deve ter no mínimo 10 caracteres" })
     .max(255, { message: "A descrição deve ter no máximo 255 caracteres" }),
-  tags: z.array(z.string()).min(1, { message: "Deve ter no mínimo 1 tag" }),
+  tags: z.string().min(1, { message: "Deve ter no mínimo 1 tag" }),
 });
