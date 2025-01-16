@@ -9,7 +9,7 @@ const SkeletonButtonLoading = ({ variants }: SkeletonButtonLoadingProps) => {
   return (
     <Button
       variant={variants}
-      className={"animate-pulse  shadow-sm hover:bg-accent hover:text-accent-foreground"}
+      className={"animate-pulse shadow-sm hover:bg-accent hover:text-accent-foreground"}
       disabled
     >
       <Loader2 className="animate-spin text-white" />

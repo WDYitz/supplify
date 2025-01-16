@@ -1,16 +1,13 @@
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import React from "react"
 
-interface StockButtonProps {
-  className?: string
-  icon?: React.ElementType,
-  onClick?: () => void
-}
-
-export const NewStockButton = ({ className, icon: Icon, onClick }: StockButtonProps) => {
+export const NewStockButton = React.forwardRef<HTMLButtonElement, React.HTMLAttributes<HTMLButtonElement>>(({ className, children, ...props }, ref) => {
   return (
-    <Button variant="dashed" className={cn(`w-[300px] h-[300px]`, className)} onClick={onClick}>
-      {Icon ? <Icon /> : "Adicionar novo estoque"}
+    <Button variant="dashed" className={cn(`w-[300px] h-[300px]`, className)} ref={ref} {...props} type="button">
+      {children}
     </Button>
   )
-}
+})
+
+NewStockButton.displayName = "NewStockButton"

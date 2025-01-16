@@ -11,7 +11,7 @@ const Actions = ({ children }: PropsWithChildren) => {
         </div>
       </ClerkLoaded>
       <ClerkLoading>
-        <div className="flex flex-col gap-4 items-center">
+        <div className="flex flex-col gap-4 items-center w-14 h-14 ">
           <SkeletonButtonLoading variants="ghost" />
         </div>
       </ClerkLoading>
