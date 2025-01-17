@@ -1,8 +1,8 @@
-import { StockForm } from "@/components/Forms/Stock";
 import { Sidebar } from "@/components/Sidebar";
 import { IsUnauthenticated } from "@/services/authentication";
+import { Dashboard } from "@/components/Dashboard";
 
-const Dashboard = async () => {
+const DashboardPage = async () => {
   await IsUnauthenticated({ returnTo: "/login" });
 
   return (
@@ -14,24 +14,19 @@ const Dashboard = async () => {
         </Sidebar.Actions>
       </Sidebar.Root>
 
-      <section className="flex flex-col w-full h-full bg-background px-14 py-8 space-y-4">
-        <div className="flex justify-between">
-          <div className="flex flex-col">
-            <h2 className="text-2xl">Dashboard</h2>
-          </div>
-          <div className="flex flex-col gap-2">
-            <p className="text-2xl">Plano Gratuito</p>
-            <p className="text-end text-lg">0 / 3</p>
+      <Dashboard.Root>
+        <Dashboard.Header />
+        <div className="flex justify-between w-full gap-4">
+          <Dashboard.Quantity />
+          <div className="flex flex-col justify-between w-full gap-4">
+            <Dashboard.Income />
+            <Dashboard.Loss />
           </div>
         </div>
-
-        <div className="flex gap-6">
-          <StockForm />
-        </div>
-      </section>
+      </Dashboard.Root>
     </main>
   );
 }
 
 
-export default Dashboard;
+export default DashboardPage;

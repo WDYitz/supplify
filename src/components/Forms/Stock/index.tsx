@@ -142,7 +142,7 @@ const StockFormInputs = ({ form }: StockFormInputsProps) => {
               Tags
               <Tooltip>
                 <TooltipTrigger>
-                  <Info width={22} className="hover:cursor-pointer" />
+                  <Info width={22} className="hover:cursor-default" />
                 </TooltipTrigger>
                 <TooltipContent>
                   <p className="py-2">Pressione ENTER para adicionar a Tag</p>
