@@ -10,7 +10,7 @@ interface ProvidersProps {
 export const Providers = ({ children }: ProvidersProps) => {
   return (
     <ClerkProvider appearance={{ baseTheme: dark }}>
-      <TooltipProvider>
+      <TooltipProvider delayDuration={100}>
         {children}
       </TooltipProvider>
     </ClerkProvider>
