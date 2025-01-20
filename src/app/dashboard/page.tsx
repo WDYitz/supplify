@@ -1,8 +1,8 @@
 import { Sidebar } from "@/components/Sidebar";
 import { IsUnauthenticated } from "@/services/authentication";
-import { Dashboard } from "@/components/Dashboard";
-import { DataTable } from "./_components/products-table";
-import { productsColumns } from "./_components/_columns";
+import { Dashboard } from "@/app/dashboard/_components/Dashboard";
+import { ProductsTable } from "@/components/ProductsTable";
+import { productsColumns } from "../../components/ProductsTable/ProductsColumns";
 import Link from "next/link";
 
 const DashboardPage = async () => {
@@ -30,7 +30,8 @@ const DashboardPage = async () => {
           </div>
           <Dashboard.DetailsAndTags />
         </Dashboard.Content>
-        <DataTable columns={productsColumns} data={[]} />
+        <h2 className="w-full text-start">Produtos</h2>
+        <ProductsTable columns={productsColumns} data={[]} />
         <Link href="/stock" className="underline">Ver todos produtos</Link>
       </Dashboard.Root>
     </main>
