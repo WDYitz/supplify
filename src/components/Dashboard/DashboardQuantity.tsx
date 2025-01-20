@@ -1,10 +1,11 @@
+
 const DashboardQuantity = () => {
   return (
-    <div className="bg-[#161716] w-[250px] h-[150px] rounded-md py-2 px-2 flex flex-col justify-between">
-      <span className="text-md text-end w-full">QTD</span>
-      <div className="px-4 py-2">
-        <span className="text-2xl">{0}</span>
-        <p className="text-2xl">Em Estoque</p>
+    <div className="bg-[#161716] w-full h-[220px] flex flex-col justify-between px-8 py-8 rounded-lg ">
+      <span className="text-2xl w-full text-right">QTD</span>
+      <div className="flex flex-col space-y-2 h-full justify-end">
+        <span className="text-5xl text-left">{0}</span>
+        <span className="text-2xl text-left">Em Estoque</span>
       </div>
     </div>
   );

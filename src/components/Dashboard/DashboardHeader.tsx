@@ -2,7 +2,7 @@ import { Button } from "../ui/button";
 
 const DashboardHeader = () => {
   return (
-    <div className="flex justify-between mb-5">
+    <div className="flex justify-between mb-5 w-full">
       <div className="flex flex-col">
         <h2 className="text-2xl">Dashboard</h2>
       </div>
