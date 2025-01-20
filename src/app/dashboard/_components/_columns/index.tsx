@@ -5,10 +5,10 @@ import { Product } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { SearchIcon } from "lucide-react";
 
-export const transactionsColumns: ColumnDef<Product>[] = [
+export const productsColumns: ColumnDef<Product>[] = [
   {
     accessorKey: "details",
-    header: "",
+    header: "Detalhes",
     cell: () => {
       return (
         <Button variant="outline">
@@ -102,5 +102,16 @@ export const transactionsColumns: ColumnDef<Product>[] = [
         </div>
       );
     },
+  },
+  {
+    accessorKey: "Actios",
+    header: "Ações",
+    cell: () => {
+      return (
+        <Button variant="outline">
+          <SearchIcon />
+        </Button>
+      );
+    }
   },
 ];
