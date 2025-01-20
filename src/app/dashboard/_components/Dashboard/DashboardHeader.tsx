@@ -1,4 +1,4 @@
-import { Button } from "../ui/button";
+import { StockForm } from "@/components/Forms/Stock";
 
 const DashboardHeader = () => {
   return (
@@ -7,9 +7,7 @@ const DashboardHeader = () => {
         <h2 className="text-2xl">Dashboard</h2>
       </div>
       <div className="flex flex-col gap-2">
-        <Button variant="dashed" className="px-4 py-2">
-          Criar estoque
-        </Button>
+        <StockForm />
       </div>
     </div>
   );
