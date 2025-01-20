@@ -1,6 +1,9 @@
 import { Sidebar } from "@/components/Sidebar";
 import { IsUnauthenticated } from "@/services/authentication";
 import { Dashboard } from "@/components/Dashboard";
+import { DataTable } from "./_components/products-table";
+import { productsColumns } from "./_components/_columns";
+import Link from "next/link";
 
 const DashboardPage = async () => {
   await IsUnauthenticated({ returnTo: "/login" });
@@ -16,13 +19,19 @@ const DashboardPage = async () => {
 
       <Dashboard.Root>
         <Dashboard.Header />
-        <div className="flex justify-between w-full gap-4">
-          <Dashboard.Quantity />
-          <div className="flex flex-col justify-between w-full gap-4">
-            <Dashboard.Income />
-            <Dashboard.Loss />
+        <Dashboard.Content>
+          <div className="flex flex-col w-full gap-4">
+            <Dashboard.Details />
+            <div className="flex w-full gap-4">
+              <Dashboard.Income />
+              <Dashboard.Loss />
+              <Dashboard.Quantity />
+            </div>
           </div>
-        </div>
+          <Dashboard.DetailsAndTags />
+        </Dashboard.Content>
+        <DataTable columns={productsColumns} data={[]} />
+        <Link href="/stock" className="underline">Ver todos produtos</Link>
       </Dashboard.Root>
     </main>
   );
