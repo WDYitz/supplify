@@ -4,7 +4,7 @@ import React from "react"
 
 export const NewStockButton = React.forwardRef<HTMLButtonElement, React.HTMLAttributes<HTMLButtonElement>>(({ className, children, ...props }, ref) => {
   return (
-    <Button variant="dashed" className={cn(`w-[300px] h-[300px]`, className)} ref={ref} {...props} type="button">
+    <Button variant="dashed" className={cn(``, className)} ref={ref} {...props} type="button">
       {children}
     </Button>
   )
