@@ -46,6 +46,7 @@ const StockForm = () => {
   return (
     <>
       <NewStockButton onClick={handleOpenForm} >
+        Adicionar Estoque
         <Plus />
       </NewStockButton>
       <Sheet
