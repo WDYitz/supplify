@@ -37,7 +37,7 @@ model Stock {
 model Product {
   id             Int                @id @default(autoincrement())
   name           String
-  qtyInStock     String             @map("qty_in_stock")
+  qtyInStock     Int                @map("qty_in_stock")
   productCode    String             @map("product_code")
   barcode        Int
   tag            String
