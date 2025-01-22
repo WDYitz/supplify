@@ -24,7 +24,7 @@ import type { UseFormReturn } from "react-hook-form"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Form } from "../../ui/form"
-import { Sheet, SheetClose, SheetContent } from "../../ui/sheet"
+import { Sheet, SheetClose, SheetContent, SheetTitle } from "../../ui/sheet"
 
 /* 
 * Refactor This component in the future !!!!!!!
@@ -53,15 +53,16 @@ const ProductsForm = () => {
 
   return (
     <>
-      <NewStockButton onClick={handleOpenForm} >
+      <NewStockButton onClick={handleOpenForm} className="gap-2">
         Adicionar Produto
-        <Plus />
+        <Plus size="18" />
       </NewStockButton>
       <Sheet
         open={open}
         onOpenChange={handleOpenForm}
       >
-        <SheetContent className="bg-[#161716] min-w-[900px]">
+        <SheetContent className="bg-[#161716] min-w-[900px]" aria-describedby="products-form" aria-description="formulario de criação de produtos">
+          <SheetTitle className="sr-only">Criar novo produto</SheetTitle>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleOnSubmit)} className="space-y-6 flex flex-col justify-between min-h-full">
               <div className="mt-12 space-y-6 overflow-y-auto">

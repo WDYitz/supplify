@@ -12,7 +12,7 @@ import type { UseFormReturn } from "react-hook-form"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Form } from "../../ui/form"
-import { Sheet, SheetClose, SheetContent } from "../../ui/sheet"
+import { Sheet, SheetClose, SheetContent, SheetTitle } from "../../ui/sheet"
 import { Tag, TagInput } from "emblor"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 
@@ -45,15 +45,16 @@ const StockForm = () => {
 
   return (
     <>
-      <NewStockButton onClick={handleOpenForm} >
+      <NewStockButton onClick={handleOpenForm} className="gap-4">
         Adicionar Estoque
-        <Plus />
+        <Plus size="18" />
       </NewStockButton>
       <Sheet
         open={open}
         onOpenChange={handleOpenForm}
       >
-        <SheetContent className="bg-[#161716]">
+        <SheetContent className="bg-[#161716]" aria-describedby="estoque-form" aria-description="formulario de criação de estoque">
+          <SheetTitle className="sr-only">Adicionar Estoque</SheetTitle>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleOnSubmit)} className="space-y-6 flex flex-col justify-between min-h-full">
               <div className="mt-12 space-y-6">

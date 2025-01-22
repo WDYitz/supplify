@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Product } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
-import { SearchIcon } from "lucide-react";
+import { Edit, SearchIcon, Trash } from "lucide-react";
 
 export const productsColumns: ColumnDef<Product>[] = [
   {
@@ -12,8 +12,19 @@ export const productsColumns: ColumnDef<Product>[] = [
     cell: () => {
       return (
         <Button variant="outline">
-          <SearchIcon />
+          <SearchIcon size="15" />
         </Button>
+      );
+    }
+  },
+  {
+    accessorKey: "name",
+    header: "Produto",
+    cell: ({ row: { original: product } }) => {
+      return (
+        <div className="space-x-1">
+          {product.name}
+        </div>
       );
     }
   },
@@ -82,6 +93,17 @@ export const productsColumns: ColumnDef<Product>[] = [
       }),
   },
   {
+    accessorKey: "unitPrice",
+    header: "Preço unitário",
+    cell: ({ row: { original: product } }) => {
+      return (
+        <div className="space-x-1">
+          {"R$ " + Number(product.unitPrice)}
+        </div>
+      );
+    },
+  },
+  {
     accessorKey: "barcode",
     header: "Código de Barras",
     cell: ({ row: { original: product } }) => {
@@ -108,9 +130,14 @@ export const productsColumns: ColumnDef<Product>[] = [
     header: "Ações",
     cell: () => {
       return (
-        <Button variant="outline">
-          <SearchIcon />
-        </Button>
+        <div className="flex gap-4">
+          <Button variant="outline">
+            <Edit size="15" />
+          </Button>
+          <Button variant="outline">
+            <Trash size="15" />
+          </Button>
+        </div>
       );
     }
   },

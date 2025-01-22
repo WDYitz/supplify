@@ -1,18 +1,14 @@
 import Image from "next/image"
 
-interface ILogoProps {
-  w: number
-  h: number
-}
-
-const Logo = ({ w, h }: ILogoProps) => {
+const Logo = () => {
   return (
     <Image
       src="/logo.png"
       alt="Supplify"
-      width={w}
-      height={h}
-      loading="lazy"
+      width={45}
+      height={45}
+      className="w-auto h-auto"
+      priority
     />
   )
 }
