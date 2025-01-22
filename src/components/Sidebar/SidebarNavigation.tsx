@@ -6,7 +6,7 @@ import Logo from "../Logo"
 const Navigation = () => {
   return (
     <div className="flex items-center flex-col gap-6">
-      <Logo w={50} h={50} />
+      <Logo />
       <Button variant="default" className="hover:bg-background py-6 w-14 mt-6" asChild>
         <Link href="/dashboard">
           <Image src="/icons/dashboard-icon.png" alt="Dashboard" width={35} height={35} />
