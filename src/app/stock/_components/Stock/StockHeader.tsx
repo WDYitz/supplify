@@ -1,4 +1,5 @@
 import { ProductsForm } from "@/components/Forms/Products";
+import { productsMock } from "@/mocks/product";
 
 const StockHeader = () => {
   return (
@@ -7,7 +8,7 @@ const StockHeader = () => {
         <h2 className="text-2xl">Estoque</h2>
       </div>
       <div className="flex flex-col gap-2">
-        <ProductsForm />
+        {productsMock && <ProductsForm />}
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ const StockPage = () => {
 
       <Stock.Root>
         <Stock.Header />
+        <Stock.Filter />
         <Stock.Table />
         <Stock.Navigation />
       </Stock.Root>
