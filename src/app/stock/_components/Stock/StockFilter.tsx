@@ -3,7 +3,6 @@ import { FilterButton } from "@/components/FilterButton";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useDebounce } from "@/hooks/useDebounce";
 import { searchProductsSchema } from "@/schemas/searchProductsSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Search } from "lucide-react";
@@ -26,7 +25,7 @@ const StockFilter = () => {
 
   const handleOnSubmit = ({ search }: SearchProductsFormType) => {
     if (search) {
-      router.push(`${pathName}/?s=${search}`)
+      router.push(`${pathName}/?search=${search}`)
     } else {
       router.push(pathName)
     }
@@ -47,7 +46,7 @@ const StockFilter = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Ex: Nome do produto, código do produto..." {...field} className="h-12 w-[260px]" onChange={() => handleValueChange} value={search} />
+                    <Input placeholder="Ex: Nome do produto, código do produto..." {...field} className="h-12 w-[260px]" onChange={handleValueChange} value={search} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
