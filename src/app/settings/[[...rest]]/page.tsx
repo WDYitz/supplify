@@ -1,10 +1,10 @@
 import { Sidebar } from "@/components/Sidebar";
 import { UserProfile } from "@clerk/nextjs";
 import { Settings } from "../_components/Settings";
-import { unauthenticateUser } from "@/services/authentication";
+import { unauthenticateUserIfNotLoggedIn } from "@/services/authentication";
 
 const SettingsPage = () => {
-  unauthenticateUser()
+  unauthenticateUserIfNotLoggedIn()
   return (
     <main className="w-full h-full flex">
       <Sidebar.Root>
