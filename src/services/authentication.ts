@@ -2,20 +2,16 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
-interface IAuthenticated {
-  redirectTo: string;
-}
-
-export const IsAuthenticated = async ({ redirectTo }: IAuthenticated) => {
+export const authenticateUser = async () => {
   const { userId } = await auth();
-  if (userId) redirect(redirectTo);
+  if (userId) {
+    redirect("/dashboard")
+  }
 }
 
-interface IUnauthenticated {
-  returnTo: string;
-}
-
-export const IsUnauthenticated = async ({ returnTo }: IUnauthenticated) => {
+export const unauthenticateUserIfNotLoggedIn = async () => {
   const { userId } = await auth();
-  if (!userId) redirect(returnTo);
+  if (!userId) {
+    redirect("/login")
+  }
 }
