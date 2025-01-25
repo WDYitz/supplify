@@ -1,7 +1,9 @@
 import { Sidebar } from "@/components/Sidebar";
 import { Stock } from "./_components/Stock";
+import { unauthenticateUserIfNotLoggedIn } from "@/services/authentication";
 
 const StockPage = () => {
+  unauthenticateUserIfNotLoggedIn()
   return (
     <main className="w-full h-full flex">
       <Sidebar.Root>
@@ -17,7 +19,6 @@ const StockPage = () => {
         <Stock.Table />
         <Stock.Navigation />
       </Stock.Root>
-
     </main>
   )
 }
