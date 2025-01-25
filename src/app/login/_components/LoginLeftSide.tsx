@@ -1,5 +1,5 @@
-import SkeletonButtonLoading from "@/components/SkeletonUI/SkeletonUIButtonLoading"
 import Logo from "@/components/Logo"
+import SkeletonButtonLoading from "@/components/SkeletonUI/SkeletonUIButtonLoading"
 import { ClerkLoaded, ClerkLoading, SignInButton } from "@clerk/nextjs"
 import { SignInWithSocials } from "./LoginWithSocial"
 
@@ -7,7 +7,7 @@ export const LoginLeftSide = () => {
   return (
     <div className="mx-auto my-auto flex h-[400px] max-w-[550px] flex-col justify-center p-8">
       <div className="flex items-center gap-2 mb-8">
-        <Logo w={35} h={30} />
+        <Logo />
         <p className="text-3xl">Supplify</p>
       </div>
       <h1 className="my-3 text-4xl font-bold">Bem-vindo</h1>
