@@ -1,4 +1,4 @@
-import { Providers } from "@/contexts/providers";
+import { Providers } from "@/providers/providers";
 import type { Metadata } from "next";
 import { Roboto_Condensed } from "next/font/google";
 import "../styles/globals.css";
