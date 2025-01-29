@@ -5,8 +5,8 @@ import { unauthenticateUserIfNotLoggedIn } from "@/services/authentication";
 import Link from "next/link";
 import { productsColumns } from "../../components/ProductsTable/ProductsColumns";
 
-const DashboardPage = () => {
-  unauthenticateUserIfNotLoggedIn()
+const DashboardPage = async () => {
+  await unauthenticateUserIfNotLoggedIn()
   return (
     <main className="w-full h-full flex">
       <Sidebar.Root>

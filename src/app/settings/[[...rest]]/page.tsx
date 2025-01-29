@@ -3,8 +3,8 @@ import { UserProfile } from "@clerk/nextjs";
 import { Settings } from "../_components/Settings";
 import { unauthenticateUserIfNotLoggedIn } from "@/services/authentication";
 
-const SettingsPage = () => {
-  unauthenticateUserIfNotLoggedIn()
+const SettingsPage = async () => {
+  await unauthenticateUserIfNotLoggedIn()
   return (
     <main className="w-full h-full flex">
       <Sidebar.Root>

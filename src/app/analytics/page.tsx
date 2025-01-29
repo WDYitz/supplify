@@ -1,8 +1,8 @@
 import { Sidebar } from "@/components/Sidebar"
 import { unauthenticateUserIfNotLoggedIn } from "@/services/authentication"
 
-const Analytics = () => {
-  unauthenticateUserIfNotLoggedIn()
+const Analytics = async () => {
+  await unauthenticateUserIfNotLoggedIn()
   return (
     <main className="w-full h-full flex">
       <Sidebar.Root>
