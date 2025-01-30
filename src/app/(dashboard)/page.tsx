@@ -1,12 +1,10 @@
-import { Dashboard } from "@/app/dashboard/_components/Dashboard";
+import { Dashboard } from "@/app/(dashboard)/_components/Dashboard";
 import { ProductsTable } from "@/components/ProductsTable";
 import { Sidebar } from "@/components/Sidebar";
-import { unauthenticateUserIfNotLoggedIn } from "@/services/authentication";
 import Link from "next/link";
 import { productsColumns } from "../../components/ProductsTable/ProductsColumns";
 
-const DashboardPage = async () => {
-  await unauthenticateUserIfNotLoggedIn()
+const DashboardPage = () => {
   return (
     <main className="w-full h-full flex">
       <Sidebar.Root>
