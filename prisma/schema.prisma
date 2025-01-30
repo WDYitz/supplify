@@ -39,7 +39,7 @@ model Product {
   name           String
   qtyInStock     Int                @map("qty_in_stock")
   productCode    String             @map("product_code")
-  barcode        Int
+  barcode        String
   tag            String
   expirationDate DateTime           @map("expiration_date")
   unitPrice      Decimal            @map("unit_price") @db.Decimal(10, 2)
