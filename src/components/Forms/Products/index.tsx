@@ -61,14 +61,14 @@ const ProductsForm = () => {
         open={open}
         onOpenChange={handleOpenForm}
       >
-        <SheetContent className="bg-[#161716] min-w-[900px]" aria-describedby="products-form" aria-description="formulario de criação de produtos">
+        <SheetContent className="bg-background min-w-[900px]" aria-describedby="products-form" aria-description="formulario de criação de produtos">
           <SheetTitle className="sr-only">Criar novo produto</SheetTitle>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleOnSubmit)} className="space-y-6 flex flex-col justify-between min-h-full">
-              <div className="mt-12 space-y-6 overflow-y-auto">
+            <form onSubmit={form.handleSubmit(handleOnSubmit)} className="space-y-6 flex flex-col justify-between items-end min-h-full">
+              <div className="mt-12 space-y-6 overflow-y-auto w-full">
                 <StockFormInputs form={form} />
               </div>
-              <div className="flex gap-4">
+              <div className="flex gap-4 w-1/2">
                 <SheetClose asChild>
                   <Button variant="outline" className="w-full bg-transparent text-md font-bold h-10">Cancelar</Button>
                 </SheetClose>
@@ -126,7 +126,7 @@ const StockFormInputs = ({ form }: ProductsFormInputsProps) => {
               </FormLabel>
               <FormControl>
                 <Select onValueChange={field.onChange} value={field.value}>
-                  <SelectTrigger className="w-[180px]">
+                  <SelectTrigger className="w-[180px] h-12">
                     <SelectValue placeholder="Selecione uma tag" className="h-12" />
                   </SelectTrigger>
                   <SelectContent>
