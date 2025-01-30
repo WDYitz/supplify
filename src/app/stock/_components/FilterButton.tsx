@@ -1,12 +1,12 @@
 "use client"
 import { useFilter } from "@/hooks/useFilter";
 import { Filter } from "lucide-react";
-import { Button } from "./ui/button";
-import { DialogTitle } from "./ui/dialog";
-import { Label } from "./ui/label";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { Slider } from "./ui/slider";
-import { Checkbox } from "./ui/checkbox";
+import { Button } from "../../../components/ui/button";
+import { DialogTitle } from "../../../components/ui/dialog";
+import { Label } from "../../../components/ui/label";
+import { Sheet, SheetContent, SheetTrigger } from "../../../components/ui/sheet";
+import { Slider } from "../../../components/ui/slider";
+import { Checkbox } from "../../../components/ui/checkbox";
 
 ///// Refactor to useReducer for better readability !!!!!
 

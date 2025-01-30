@@ -1,5 +1,5 @@
 "use client"
-import { FilterButton } from "@/components/FilterButton";
+import { FilterButton } from "@/app/stock/_components/FilterButton";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
