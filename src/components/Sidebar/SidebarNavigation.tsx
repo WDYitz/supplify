@@ -8,7 +8,7 @@ const Navigation = () => {
     <div className="flex items-center flex-col gap-6">
       <Logo />
       <Button variant="default" className="hover:bg-background py-6 w-14 mt-6" asChild>
-        <Link href="/dashboard" prefetch>
+        <Link href="/" prefetch>
           <Image src="/icons/dashboard-icon.png" alt="Dashboard" width={35} height={35} />
         </Link>
       </Button>
