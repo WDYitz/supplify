@@ -6,9 +6,24 @@ import { DialogTitle } from "./ui/dialog";
 import { Label } from "./ui/label";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Slider } from "./ui/slider";
+import { Checkbox } from "./ui/checkbox";
+
+///// Refactor to useReducer for better readability !!!!!
 
 export const FilterButton = () => {
-  const { unitValue, setUnitValue, MIN_PRICE, MAX_PRICE, MAX_QTD, MIN_QTD, handleSearch, setQtdValue, qtdValue } = useFilter();
+  const {
+    unitValue,
+    setUnitValue,
+    MIN_PRICE,
+    MAX_PRICE,
+    MAX_QTD,
+    MIN_QTD,
+    handleSearch,
+    setQtdValue,
+    qtdValue,
+    classification,
+    setClassification
+  } = useFilter();
 
   const formatPrice = (price: number) => {
     return price === MAX_PRICE ? `R$ ${price.toLocaleString()}+` : `R$ ${price.toLocaleString()}`;
@@ -62,7 +77,36 @@ export const FilterButton = () => {
               </div>
             </div>
 
-
+            <div>
+              <div className="flex flex-col gap-4">
+                <Label className="tabular-nums text-md">
+                  Classificação
+                </Label>
+                <div className="flex items-center gap-4">
+                  <Checkbox id="classificationA" checked={classification.A} onClick={() => setClassification({ ...classification, A: !classification.A })} />
+                  <Label className="tabular-nums text-md hover:cursor-pointer" htmlFor="classificationA">
+                    A
+                  </Label>
+                </div>
+                <div className="flex items-center gap-4">
+                  <Checkbox id="classificationB" checked={classification.B} onClick={() => setClassification({ ...classification, B: !classification.B })} />
+                  <Label className="tabular-nums text-md hover:cursor-pointer" htmlFor="classificationB">
+                    B
+                  </Label>
+                </div>
+                <div className="flex items-center gap-4">
+                  <Checkbox id="classificationC" checked={classification.C} onClick={() => setClassification({ ...classification, C: !classification.C })} />
+                  <Label className="tabular-nums text-md hover:cursor-pointer" htmlFor="classificationC">
+                    C
+                  </Label>
+                </div>
+                <div className="flex flex-col gap-2 py-2 text-xs">
+                  <span>A - Baixo volume de consumo</span>
+                  <span>B - Consumo Moderado</span>
+                  <span>C - Alto volume de consumo</span>
+                </div>
+              </div>
+            </div>
           </div>
           <Button variant="default" className="w-full bg-indigo-500" onClick={handleSearch}>
             Aplicar
