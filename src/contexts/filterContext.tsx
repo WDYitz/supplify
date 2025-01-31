@@ -59,7 +59,22 @@ export const FilterProvider = ({ children }: PropsWithChildren) => {
   }
 
   return (
-    <FilterContext.Provider value={{ unitValue, setUnitValue, qtdValue, setQtdValue, search, handleSearch, MIN_PRICE, MAX_PRICE, MIN_QTD, MAX_QTD, handleSearchValueChange, clearFilters, setClassification, classification }}>
+    <FilterContext.Provider value={{
+      unitValue,
+      setUnitValue,
+      qtdValue,
+      setQtdValue,
+      search,
+      handleSearch,
+      MIN_PRICE,
+      MAX_PRICE,
+      MIN_QTD,
+      MAX_QTD,
+      handleSearchValueChange,
+      clearFilters,
+      setClassification,
+      classification
+    }}>
       {children}
     </FilterContext.Provider>
   )

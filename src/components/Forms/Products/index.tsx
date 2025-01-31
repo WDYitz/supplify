@@ -95,7 +95,7 @@ const StockFormInputs = ({ form }: ProductsFormInputsProps) => {
           name="product"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-2xl">Produto</FormLabel>
+              <FormLabel className="text-lg">Produto</FormLabel>
               <FormControl>
                 <Input placeholder="Nome do produto" {...field} className="h-12" />
               </FormControl>
@@ -108,7 +108,7 @@ const StockFormInputs = ({ form }: ProductsFormInputsProps) => {
           name="quantity"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-2xl">Quantidade</FormLabel>
+              <FormLabel className="text-lg">Quantidade</FormLabel>
               <FormControl>
                 <Input placeholder="Ex: 2400" {...field} className="h-12" />
               </FormControl>
@@ -121,7 +121,7 @@ const StockFormInputs = ({ form }: ProductsFormInputsProps) => {
           name="tag"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="text-2xl flex gap-2 items-center">
+              <FormLabel className="text-lg flex gap-2 items-center">
                 Tag
               </FormLabel>
               <FormControl>
@@ -147,7 +147,7 @@ const StockFormInputs = ({ form }: ProductsFormInputsProps) => {
           name="expirationDate"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="text-2xl flex gap-2 items-center">
+              <FormLabel className="text-lg flex gap-2 items-center">
                 Data de validade
               </FormLabel>
               <Popover>
@@ -193,7 +193,7 @@ const StockFormInputs = ({ form }: ProductsFormInputsProps) => {
           name="productCode"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="text-2xl flex gap-2 items-center">
+              <FormLabel className="text-lg flex gap-2 items-center">
                 Código do produto
               </FormLabel>
               <FormControl>
@@ -208,7 +208,7 @@ const StockFormInputs = ({ form }: ProductsFormInputsProps) => {
           name="barCode"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="text-2xl flex gap-2 items-center">
+              <FormLabel className="text-lg flex gap-2 items-center">
                 Código de barra
               </FormLabel>
               <FormControl>
@@ -223,7 +223,7 @@ const StockFormInputs = ({ form }: ProductsFormInputsProps) => {
           name="unitPrice"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="text-2xl flex gap-2 items-center">
+              <FormLabel className="text-lg flex gap-2 items-center">
                 Valor unitário
               </FormLabel>
               <FormControl>
@@ -238,7 +238,7 @@ const StockFormInputs = ({ form }: ProductsFormInputsProps) => {
           name="classification"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="text-2xl flex gap-2 items-center">
+              <FormLabel className="text-lg flex gap-2 items-center">
                 Classificação
                 <Tooltip>
                   <TooltipTrigger>
