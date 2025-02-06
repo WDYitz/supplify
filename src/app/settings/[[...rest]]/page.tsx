@@ -1,5 +1,4 @@
 import { Sidebar } from "@/components/Sidebar";
-import { UserProfile } from "@clerk/nextjs";
 import { Settings } from "../_components/Settings";
 
 const SettingsPage = () => {
@@ -15,7 +14,9 @@ const SettingsPage = () => {
       <Settings.Root>
         <Settings.Header />
         <Settings.Content >
-          <UserProfile />
+          <Settings.Navigation />
+          <Settings.Info />
+          {/* <UserProfile /> */}
         </Settings.Content>
       </Settings.Root>
     </main>
