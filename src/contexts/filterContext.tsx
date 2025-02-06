@@ -30,8 +30,8 @@ export const FilterContext = createContext<IFilterContext>({} as IFilterContext)
 export const FilterProvider = ({ children }: PropsWithChildren) => {
   const MIN_PRICE = 0;
   const MAX_PRICE = 1240;
-  const MIN_QTD = 0
-  const MAX_QTD = 250
+  const MIN_QTD = 0;
+  const MAX_QTD = 250;
   const [unitValue, setUnitValue] = useState([MIN_PRICE, MAX_PRICE]);
   const [qtdValue, setQtdValue] = useState([MIN_QTD, MAX_QTD]);
   const [search, setSearch] = useState<string>("");
