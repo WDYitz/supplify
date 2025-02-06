@@ -8,7 +8,7 @@ const DashboardStockDetails = () => {
   })
 
   return (
-    <div className="bg-[#161716] rounded-md flex items-center justify-between h-[150px] px-8 py-2">
+    <div className="bg-[#1a191e] rounded-md flex items-center justify-between h-[150px] px-8 py-2">
       <div className="space-y-4">
         <p className="text-2xl font-extralight">Título</p>
         <p className="text-xl font-medium">{"Supermercado Supplify"}</p>
