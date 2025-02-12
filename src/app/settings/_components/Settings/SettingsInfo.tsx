@@ -7,6 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
 import { useLayoutEffect, useState, type ChangeEvent } from "react"
+import { SettingsTheme } from "./SettingsTheme"
 
 // REFACTOR COMPONENT !!! 
 
@@ -174,18 +175,7 @@ export const SettingsInfo = () => {
           </section>
         </CardContent>
       </Card>
-      <Card className="rounded-lg w-2/3">
-        <CardHeader className="flex flex-row items-center gap-4">
-          <div className="flex justify-between w-full items-start">
-            <h2 className="flex items-center gap-1.5 text-sm font-medium">
-              Temas
-            </h2>
-          </div>
-        </CardHeader>
-        <CardContent>
-
-        </CardContent>
-      </Card>
+      <SettingsTheme />
     </div >
   )
 }
