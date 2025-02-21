@@ -6,7 +6,7 @@ import { ArrowUpRightIcon } from "lucide-react";
 
 const DashboardLoss = () => {
   return (
-    <div className="bg-[#161716] w-full h-[220px] flex flex-col px-8 py-8 space-y-4 rounded-lg justify-center items-end">
+    <div className="bg-[#1a191e] w-full h-[220px] flex flex-col px-8 py-8 space-y-4 rounded-lg justify-center items-end">
       <Button variant="dashed" asChild>
         <Link href="/stock" className="flex gap-2 text-center">
           Ver Mais

@@ -1,11 +1,10 @@
 
 const DashboardStockDetails = () => {
-  const date = new Date();
-  const dateNow = new Date(date).toLocaleDateString("pt-BR", {
+  const dateNow = new Date().toLocaleDateString("pt-BR", {
     day: "2-digit",
     month: "long",
     year: "numeric",
-  })
+  });
 
   return (
     <div className="bg-[#1a191e] rounded-md flex items-center justify-between h-[150px] px-8 py-2">

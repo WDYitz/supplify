@@ -1,7 +1,7 @@
 
 const DashboardDescriptionsAndTags = () => {
   return (
-    <div className="bg-[#161716] rounded-md flex flex-col justify-start w-[40%] h-full px-8 py-8 space-y-8">
+    <div className="bg-[#1a191e] rounded-md flex flex-col justify-start w-[40%] h-full px-8 py-8 space-y-8">
       <div className="space-y-4">
         <p className="text-xl font-extralight">Descrição</p>
         <p className="text-xl font-medium w-full">{"Estoque de alimentos do supermercado Supplify, Produtos como milho, soja, refrigerantes e outros."}</p>
