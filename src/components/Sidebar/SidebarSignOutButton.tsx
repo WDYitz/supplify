@@ -13,7 +13,7 @@ const SidebarSignOutButton = () => {
   };
 
   return (
-    <Button variant="default" className="w-14 h-14 hover:bg-transparent" onClick={handleSignOut} >
+    <Button variant="default" className="w-14 h-14 hover:bg-transparent" onClick={handleSignOut}>
       <Image src="/icons/login-icon.png" alt="Sair" width={32} height={32} />
     </Button>
   )
