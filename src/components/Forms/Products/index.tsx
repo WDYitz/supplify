@@ -253,9 +253,9 @@ const StockFormInputs = ({ form }: ProductsFormInputsProps) => {
               </FormLabel>
               <FormControl>
                 <ToggleGroup type="single" {...field} className="w-full flex justify-start space-x-4">
-                  <ToggleGroupItem value="A">A</ToggleGroupItem>
-                  <ToggleGroupItem value="B">B</ToggleGroupItem>
-                  <ToggleGroupItem value="C">C</ToggleGroupItem>
+                  <ToggleGroupItem value="A" className="size-[48px]">A</ToggleGroupItem>
+                  <ToggleGroupItem value="B" className="size-[48px]">B</ToggleGroupItem>
+                  <ToggleGroupItem value="C" className="size-[48px]">C</ToggleGroupItem>
                 </ToggleGroup>
               </FormControl>
               <FormMessage />

@@ -1,20 +1,17 @@
 "use client";
 
+import { ProductsDetails } from "@/app/stock/_components/ProductDetails";
 import { Button } from "@/components/ui/button";
 import { Product } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
-import { Edit, SearchIcon, Trash } from "lucide-react";
+import { Edit, Trash } from "lucide-react";
 
 export const productsColumns: ColumnDef<Product>[] = [
   {
     accessorKey: "details",
     header: "Detalhes",
-    cell: () => {
-      return (
-        <Button variant="outline">
-          <SearchIcon size="15" />
-        </Button>
-      );
+    cell: ({ row: { original: product } }) => {
+      return <ProductsDetails data={product} />;
     }
   },
   {
