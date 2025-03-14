@@ -34,7 +34,7 @@ export const middleware = (request: NextRequest) => {
   return NextResponse.next()
 }
 
-export default clerkMiddleware();
+export default clerkMiddleware({ debug: true });
 
 export const config: MiddlewareConfig = {
   matcher: [

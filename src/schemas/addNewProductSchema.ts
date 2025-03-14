@@ -9,7 +9,8 @@ export const addNewProductSchema = z.object({
     .max(80, { message: "Nome do produto deve ter no maximo 80 caracteres" }),
   quantity: z.number({
     required_error: "Quantidade é obrigatória",
-  }).int({ message: "A Quantidade deve ser um numero" }).min(1, { message: "Quantidade deve ser maior que 0" }),
+    message: "A Quantidade deve ser um numero",
+  }).int().min(1, { message: "Quantidade deve ser maior que 0" }),
   tag: z.string({
     required_error: "Por favor selecione uma tag.",
   }),
