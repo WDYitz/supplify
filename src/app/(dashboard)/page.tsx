@@ -1,10 +1,18 @@
 import { Dashboard } from "@/app/(dashboard)/_components/Dashboard";
 import { ProductsTable } from "@/components/ProductsTable";
 import { Sidebar } from "@/components/Sidebar";
+import { auth } from "@/lib/auth";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { productsColumns } from "../../components/ProductsTable/ProductsColumns";
 
-const DashboardPage = () => {
+const DashboardPage = async () => {
+  const session = await auth()
+
+  if (!session) {
+    redirect("/login");
+  }
+
   return (
     <main className="w-full h-full flex">
       <Sidebar.Root>

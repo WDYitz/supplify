@@ -1,6 +1,14 @@
 import { Sidebar } from "@/components/Sidebar"
+import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
-const Analytics = () => {
+const Analytics = async () => {
+  const session = await auth()
+
+  if (!session) {
+    redirect("/login");
+  }
+
   return (
     <main className="w-full h-full flex">
       <Sidebar.Root>

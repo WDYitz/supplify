@@ -1,9 +1,9 @@
 import { Sidebar } from "@/components/Sidebar";
-import { Stock } from "./_components/Stock";
+import { Settings } from "./_components/Settings";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
-const StockPage = async () => {
+const SettingsPage = async () => {
   const session = await auth()
 
   if (!session) {
@@ -19,13 +19,16 @@ const StockPage = async () => {
         </Sidebar.Actions>
       </Sidebar.Root>
 
-      <Stock.Root>
-        <Stock.Header />
-        <Stock.Filter />
-        <Stock.Table />
-        <Stock.Navigation />
-      </Stock.Root>
+      <Settings.Root>
+        <Settings.Header />
+        <Settings.Content >
+          <Settings.Navigation />
+          <Settings.Info session={session} />
+          {/* <UserProfile /> */}
+        </Settings.Content>
+      </Settings.Root>
     </main>
   )
 }
-export default StockPage;
+
+export default SettingsPage;
