@@ -11,7 +11,7 @@ export const SettingsTheme = () => {
   ];
 
   return (
-    <Card className="rounded-lg w-2/3">
+    <Card className="rounded-lg w-2/3 bg-[#161716]">
       <CardHeader className="flex flex-row items-center gap-4">
         <div className="flex justify-between w-full items-start">
           <h2 className="flex items-center gap-1.5 text-sm font-medium">

@@ -1,6 +1,4 @@
 import Logo from "@/components/Logo"
-import SkeletonButtonLoading from "@/components/SkeletonUI/SkeletonUIButtonLoading"
-import { ClerkLoaded, ClerkLoading, SignInButton } from "@clerk/nextjs"
 import { SignInWithSocials } from "./LoginWithSocial"
 
 export const LoginLeftSide = () => {
@@ -15,18 +13,8 @@ export const LoginLeftSide = () => {
         A Supplify é uma plataforma de gestão de estoque que oferece insights personalizados,
         facilitando o controle de seus produtos
       </p>
-      <ClerkLoaded>
-        <SignInButton>
-          <SignInWithSocials />
-        </SignInButton>
-      </ClerkLoaded>
 
-      <ClerkLoading>
-        <div className="gap-4 flex flex-col w-full">
-          <SkeletonButtonLoading />
-          <SkeletonButtonLoading />
-        </div>
-      </ClerkLoading>
+      <SignInWithSocials />
     </div>
   )
 }
