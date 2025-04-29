@@ -1,4 +1,4 @@
-import { Providers } from "@/providers/providers";
+import { GlobalProviders } from "@/providers/global-providers";
 import type { Metadata } from "next";
 import { Roboto_Condensed } from "next/font/google";
 import "../styles/globals.css";
@@ -24,9 +24,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={`${roboto.className} dark antialiased h-[100vh]`}>
-        <Providers>
+        <GlobalProviders>
           {children}
-        </Providers>
+        </GlobalProviders>
       </body>
     </html>
   );

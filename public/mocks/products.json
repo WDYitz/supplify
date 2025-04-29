@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Produto 1",
+    "productCode": "y24g24",
+    "id": 1,
+    "qtyInStock": 26,
+    "barcode": "1110110",
+    "tag": "Licor",
+    "expirationDate": "2025-04-28T00:00:00.000Z",
+    "unitPrice": 10.5,
+    "classification": "C",
+    "createdAt": "2025-04-28T00:00:00.000Z",
+    "updatedAt": "2025-04-28T00:00:00.000Z",
+    "stockId": 1
+  },
+  {
+    "name": "Produto 2",
+    "productCode": "g24yy2",
+    "id": 2,
+    "qtyInStock": 23,
+    "barcode": "1101110",
+    "tag": "Refrigerante",
+    "expirationDate": "2025-04-28T00:00:00.000Z",
+    "unitPrice": 10.5,
+    "classification": "A",
+    "createdAt": "2025-04-28T00:00:00.000Z",
+    "updatedAt": "2025-04-28T00:00:00.000Z",
+    "stockId": 1
+  }
+]
