@@ -1,7 +1,8 @@
+import { getMockData } from "@/actions/get-mock-data";
 import { ProductsForm } from "@/components/Forms/Products";
-import { productsMock } from "@/mocks/product";
 
-const StockHeader = () => {
+const StockHeader = async () => {
+  const productsMock = await getMockData();
   return (
     <div className="flex justify-between mb-5 w-full">
       <div className="flex flex-col">

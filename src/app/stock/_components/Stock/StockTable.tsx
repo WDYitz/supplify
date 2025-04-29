@@ -1,11 +1,10 @@
+import { getMockData } from "@/actions/get-mock-data";
 import { ProductsTable } from "@/components/ProductsTable";
 import { productsColumns } from "@/components/ProductsTable/ProductsColumns";
-import { productsMock } from "@/mocks/product";
 import ProductDoesNotExist from "../ProductDoesNotExist";
-import { useSearchParams } from "next/navigation";
 
-const StockTable = () => {
-
+const StockTable = async () => {
+  const productsMock = await getMockData()
 
   if (productsMock.length <= 0) {
     return <ProductDoesNotExist />

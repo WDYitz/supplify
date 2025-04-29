@@ -7,17 +7,23 @@ import { useFilter } from "@/hooks/useFilter";
 import { searchProductsSchema } from "@/schemas/searchProductsSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Search, X } from "lucide-react";
+import type { ChangeEvent } from "react";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
 
 export type SearchProductsFormType = z.infer<typeof searchProductsSchema>
 
 const StockFilter = () => {
-  const { search, handleSearch, handleSearchValueChange, clearFilters } = useFilter();
+  const { state, handleSearch, handleSearchValueChange, clearFilters } = useFilter();
 
   const form = useForm<SearchProductsFormType>({
     resolver: zodResolver(searchProductsSchema),
   })
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault()
+    handleSearchValueChange(event.target.value)
+  }
 
   return (
     <div className="w-full flex">
@@ -30,7 +36,13 @@ const StockFilter = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Ex: Nome do produto, código do produto..." {...field} className="h-12 w-[260px]" onChange={handleSearchValueChange} value={search} />
+                    <Input
+                      placeholder="Ex: Nome do produto, código do produto..."
+                      {...field}
+                      className="h-12 w-[260px]"
+                      onChange={handleChange}
+                      value={state.search}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

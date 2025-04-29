@@ -1,18 +1,19 @@
+import { getMockData } from "@/actions/get-mock-data"
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination"
-import { productsMock } from "@/mocks/product"
 
-const StockPagination = () => {
-  const productsQuantity = productsMock.length / 2
+const StockPagination = async () => {
+  const productsMock = await getMockData()
+
   return (
     <Pagination>
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious href="#" />
         </PaginationItem>
-        {Array.from({ length: productsQuantity }, (_, index) => {
+        {Array.from({ length: productsMock.length }, (_, index) => {
           return (
-            <PaginationItem key={index}>
-              <PaginationLink href="#">{index}</PaginationLink>
+            <PaginationItem key={index + 1}>
+              <PaginationLink href="#">{index + 1}</PaginationLink>
             </PaginationItem>
           )
         })

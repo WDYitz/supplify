@@ -1,32 +1,28 @@
 "use client"
 import { useFilter } from "@/hooks/useFilter";
+import { initialFilterState } from "@/reducers/filterReducer";
 import { Filter } from "lucide-react";
 import { Button } from "../../../components/ui/button";
+import { Checkbox } from "../../../components/ui/checkbox";
 import { DialogTitle } from "../../../components/ui/dialog";
 import { Label } from "../../../components/ui/label";
 import { Sheet, SheetContent, SheetTrigger } from "../../../components/ui/sheet";
 import { Slider } from "../../../components/ui/slider";
-import { Checkbox } from "../../../components/ui/checkbox";
 
 ///// Refactor to useReducer for better readability !!!!!
 
 export const FilterButton = () => {
-  const {
-    unitValue,
-    setUnitValue,
-    MIN_PRICE,
-    MAX_PRICE,
-    MAX_QTD,
-    MIN_QTD,
-    handleSearch,
-    setQtdValue,
-    qtdValue,
-    classification,
-    setClassification
-  } = useFilter();
+  const { state, handleQtdValueChange, handleSearch } = useFilter();
 
   const formatPrice = (price: number) => {
-    return price === MAX_PRICE ? `R$ ${price.toLocaleString()}+` : `R$ ${price.toLocaleString()}`;
+    return price === initialFilterState.max_price ? `R$ ${price.toLocaleString()}+` : `R$ ${price.toLocaleString()}`;
+  };
+
+  const handlePriceValueChange = (value: number[]) => { }
+
+  const handleQtdChange = (value: number[]) => {
+    const [min, max] = value;
+    handleQtdValueChange([min, max]);
   };
 
   return (
@@ -46,15 +42,15 @@ export const FilterButton = () => {
               </Label>
               <div className="flex flex-col items-center gap-4">
                 <Slider
-                  value={unitValue}
-                  onValueChange={setUnitValue}
-                  min={MIN_PRICE}
-                  max={MAX_PRICE}
+                  value={[state.min_price, state.max_price]}
+                  onValueChange={handlePriceValueChange}
+                  min={state.min_price}
+                  max={state.max_price}
                   aria-label="Unit price range"
                 />
                 <div className="flex justify-between w-full">
-                  <span>{formatPrice(unitValue[0])}</span>
-                  <span>{formatPrice(unitValue[1])}</span>
+                  <span>{formatPrice(state.min_price)}</span>
+                  <span>{formatPrice(state.max_price)}</span>
                 </div>
               </div>
             </div>
@@ -65,14 +61,14 @@ export const FilterButton = () => {
               </Label>
               <div className="flex flex-col items-center gap-4">
                 <Slider
-                  max={MAX_QTD}
-                  min={MIN_QTD}
-                  onValueChange={setQtdValue}
-                  value={qtdValue}
+                  max={state.max_qtd}
+                  min={state.min_qtd}
+                  onValueChange={handleQtdChange}
+                  value={[state.min_qtd, state.max_qtd]}
                 />
                 <div className="flex justify-between w-full">
-                  <span>{qtdValue[0]}</span>
-                  <span>{qtdValue[1]}</span>
+                  <span>{state.min_qtd}</span>
+                  <span>{state.max_qtd}</span>
                 </div>
               </div>
             </div>
@@ -83,19 +79,19 @@ export const FilterButton = () => {
                   Classificação
                 </Label>
                 <div className="flex items-center gap-4">
-                  <Checkbox id="classificationA" checked={classification.A} onClick={() => setClassification({ ...classification, A: !classification.A })} />
+                  <Checkbox id="classificationA" checked={state.classification.A} onClick={() => { }} />
                   <Label className="tabular-nums text-md hover:cursor-pointer" htmlFor="classificationA">
                     A
                   </Label>
                 </div>
                 <div className="flex items-center gap-4">
-                  <Checkbox id="classificationB" checked={classification.B} onClick={() => setClassification({ ...classification, B: !classification.B })} />
+                  <Checkbox id="classificationB" checked={state.classification.B} onClick={() => { }} />
                   <Label className="tabular-nums text-md hover:cursor-pointer" htmlFor="classificationB">
                     B
                   </Label>
                 </div>
                 <div className="flex items-center gap-4">
-                  <Checkbox id="classificationC" checked={classification.C} onClick={() => setClassification({ ...classification, C: !classification.C })} />
+                  <Checkbox id="classificationC" checked={state.classification.C} onClick={() => { }} />
                   <Label className="tabular-nums text-md hover:cursor-pointer" htmlFor="classificationC">
                     C
                   </Label>
