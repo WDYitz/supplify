@@ -1,6 +1,12 @@
 "use client"
+import { filterReducer, initialFilterState, type InitialFilterStateType } from "@/reducers/filterReducer";
 import { usePathname, useRouter } from "next/navigation";
-import { createContext, useState, type ChangeEvent, type PropsWithChildren } from "react";
+import { createContext, useReducer, type PropsWithChildren } from "react";
+
+/* _________________________
+/ | REFACTOR FILTER CONTEXT |
+/ |_________________________|
+*/
 
 type FilterClassificationType = {
   A?: boolean,
@@ -9,71 +15,104 @@ type FilterClassificationType = {
 }
 
 interface IFilterContext {
-  unitValue: number[]
-  setUnitValue: (value: number[]) => void
-  qtdValue: number[]
-  setQtdValue: (value: number[]) => void
-  search: string
-  handleSearch: () => void
-  handleSearchValueChange: (e: ChangeEvent<HTMLInputElement>) => void
-  clearFilters: () => void
-  classification: FilterClassificationType
-  setClassification: (value: FilterClassificationType) => void
-  MIN_PRICE: number
-  MAX_PRICE: number
-  MIN_QTD: number
-  MAX_QTD: number
+  state: InitialFilterStateType;
+  handleSearch: () => void;
+  handleSearchValueChange: (payload: string) => void;
+  handleQtdValueChange: (value: number[]) => void;
+  // handleClassificationValueChange: (key: keyof FilterClassificationType, value: boolean) => void;
+  clearFilters: () => void;
 }
 
 export const FilterContext = createContext<IFilterContext>({} as IFilterContext);
 
 export const FilterProvider = ({ children }: PropsWithChildren) => {
-  const MIN_PRICE = 0;
-  const MAX_PRICE = 1240;
-  const MIN_QTD = 0;
-  const MAX_QTD = 250;
-  const [unitValue, setUnitValue] = useState([MIN_PRICE, MAX_PRICE]);
-  const [qtdValue, setQtdValue] = useState([MIN_QTD, MAX_QTD]);
-  const [search, setSearch] = useState<string>("");
-  const [classification, setClassification] = useState<FilterClassificationType>({ A: false, B: false, C: false });
+  const [state, dispatch] = useReducer(
+    filterReducer,
+    initialFilterState
+  );
+
   const pathName = usePathname();
   const router = useRouter();
 
   const handleSearch = () => {
-    if (search.length > 0) {
-      return router.push(`${pathName}/?search=${search}&min-price=${unitValue[0]}&max-price=${unitValue[1]}&min-qtd=${qtdValue[0]}&max-qtd=${qtdValue[1]}&classification=${Object.keys(classification).filter((key) => classification[key as keyof FilterClassificationType]).join(",")}`)
+    if (state.search.length > 0) {
+      return router.push(`${pathName}/?search=${state.search}`)
     }
-    return router.push(`${pathName}/?min-price=${unitValue[0]}&max-price=${unitValue[1]}&min-qtd=${qtdValue[0]}&max-qtd=${qtdValue[1]}&classification=${Object.keys(classification).filter((key) => classification[key as keyof FilterClassificationType]).join(",")}`)
+    if (state.min_price !== initialFilterState.min_price || state.max_price !== initialFilterState.max_price) {
+      return router.push(`${pathName}?price=${state.min_price},${state.max_price}`)
+    }
+    if (state.min_qtd !== initialFilterState.min_qtd || state.max_qtd !== initialFilterState.max_qtd) {
+      return router.push(`${pathName}&qtd=${state.min_qtd},${state.max_qtd}`)
+    }
+    if (Object.keys(state.classification).filter((key) => state.classification[key as keyof FilterClassificationType]).length > 0) {
+      return router.push(`${pathName}&classification=${Object.keys(state.classification).filter((key) => state.classification[key as keyof FilterClassificationType]).join(",")}`)
+    }
   }
 
-  const handleSearchValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleSearchValueChange = (payload: string) => {
+    dispatch({
+      type: "SET_SEARCH",
+      payload: payload
+    })
+  }
+
+  const handleQtdValueChange = (value: number[]) => {
+    return dispatch({
+      type: "SET_QTD",
+      payload: {
+        min_qtd: value[0],
+        max_qtd: value[1]
+      }
+    })
   }
 
   const clearFilters = () => {
+    if (state.search.length > 0) {
+      dispatch({
+        type: "SET_SEARCH",
+        payload: initialFilterState.search
+      })
+      return router.push(pathName)
+    }
+    if (state.min_price === initialFilterState.min_price || state.max_price === initialFilterState.max_price) {
+      dispatch({
+        type: "SET_PRICE",
+        payload: {
+          min_price: initialFilterState.min_price,
+          max_price: initialFilterState.max_price
+        }
+      })
+      return router.push(pathName)
+    }
+    if (state.min_qtd !== initialFilterState.min_qtd || state.max_qtd !== initialFilterState.max_qtd) {
+      dispatch({
+        type: "SET_QTD",
+        payload: {
+          min_qtd: initialFilterState.min_qtd,
+          max_qtd: initialFilterState.max_qtd
+        }
+      })
+    }
+    if (Object.keys(state.classification).filter((key) => state.classification[key as keyof FilterClassificationType]).length > 0) {
+      dispatch({
+        type: "SET_CLASSIFICATION",
+        payload: {
+          key: Object.keys(state.classification)[0],
+          value: false
+        }
+      })
+    }
     router.push(pathName);
-    setUnitValue([MIN_PRICE, MAX_PRICE]);
-    setQtdValue([MIN_QTD, MAX_QTD]);
-    setSearch("");
-    setClassification({ A: false, B: false, C: false });
   }
 
   return (
     <FilterContext.Provider value={{
-      unitValue,
-      setUnitValue,
-      qtdValue,
-      setQtdValue,
-      search,
+      state,
       handleSearch,
-      MIN_PRICE,
-      MAX_PRICE,
-      MIN_QTD,
-      MAX_QTD,
       handleSearchValueChange,
+      handleQtdValueChange,
       clearFilters,
-      setClassification,
-      classification
     }}>
       {children}
     </FilterContext.Provider>
