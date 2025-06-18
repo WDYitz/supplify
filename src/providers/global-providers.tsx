@@ -1,5 +1,4 @@
 import { TooltipProvider } from '@/components/ui/tooltip'
-import { FilterProvider } from '@/contexts/filterContext'
 import type { ReactNode } from 'react'
 
 interface GlobalProvidersProps {
@@ -8,10 +7,8 @@ interface GlobalProvidersProps {
 
 export const GlobalProviders = ({ children }: GlobalProvidersProps) => {
   return (
-    <FilterProvider>
       <TooltipProvider delayDuration={100}>
         {children}
       </TooltipProvider>
-    </FilterProvider>
   )
 }

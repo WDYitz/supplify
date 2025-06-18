@@ -20,13 +20,13 @@ const useSearchFilter = () => {
     replace(`${pathname}?${params.toString()}`);
   };
 
-  const clearFilters = () => {
+  const onFilterClear = () => {
     Array.from(params.keys()).forEach(key => params.delete(key));
   };
 
   return {
     onSearch,
-    clearFilters
+    onFilterClear
   };
 };
 

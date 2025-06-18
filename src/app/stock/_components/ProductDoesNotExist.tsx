@@ -7,7 +7,7 @@ const ProductDoesNotExist = () => {
       <BoxesIcon size={55} />
       <span className="text-slate-400 text-2xl">
         Parece que você ainda não
-        possui nenhum produto em estoque
+        possui nenhum produto cadastrado.
       </span>
       <ProductsForm />
     </div>

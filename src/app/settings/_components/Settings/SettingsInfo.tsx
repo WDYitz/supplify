@@ -1,5 +1,4 @@
 "use client"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import type { Session } from "next-auth"
@@ -19,9 +18,9 @@ export const SettingsInfo = ({ session }: SettingsInfoProps) => {
             <h2 className="flex items-center gap-1.5 text-sm font-medium">
               Informações da conta
             </h2>
-            <div className="flex flex-col gap-2">
+            <div className="flex gap-2">
               <p className="font-medium text-sm">
-                Sessão
+                Ultima Sessão
               </p>
               <span className="text-sm">{session.expires ? new Date(session.expires).toLocaleString() : "N/A"}</span>
             </div>
@@ -48,7 +47,19 @@ export const SettingsInfo = ({ session }: SettingsInfoProps) => {
                   <Input
                     id="firstName"
                     placeholder="Enter first name"
-                    defaultValue={session.user?.name ?? ""}
+                    defaultValue={session.user?.name?.split(" ")[0] ?? ""}
+                    readOnly
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="lastName" className="font-medium">
+                    Sobrenome
+                  </label>
+                  <Input
+                    id="email"
+                    placeholder="Enter email"
+                    defaultValue={session.user?.name?.split(" ")[1] ?? ""}
+                    readOnly
                   />
                 </div>
               </div>
@@ -61,16 +72,9 @@ export const SettingsInfo = ({ session }: SettingsInfoProps) => {
                     id="email"
                     placeholder="Enter email"
                     defaultValue={session.user?.email ?? ""}
+                    readOnly
                   />
                 </div>
-              </div>
-              <div className="mt-8 space-x-4">
-                <Button variant="outline" className="bg-transparent" onClick={() => { }}>
-                  Editar Informações
-                </Button>
-                <Button variant="default" className="bg-[#8257E5] hover:bg-opacity-90" onClick={() => { }}>
-                  Salvar Informações
-                </Button>
               </div>
             </div>
           </section>
