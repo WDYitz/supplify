@@ -1,15 +1,20 @@
-import type { Decimal } from "@prisma/client/runtime/library";
+
+export enum ProductClassification {
+  A = "A",
+  B = "B",
+  C = "C",
+}
 
 export interface IProductMock {
   name: string;
-  id: number;
+  id: string;
   qtyInStock: number;
   productCode: string;
   barcode: string;
   tag: string;
   expirationDate: Date;
-  unitPrice: Decimal;
-  classification: "A" | "B" | "C";
+  unitPrice: number;
+  classification: ProductClassification;
   createdAt: Date;
   updatedAt: Date;
   stockId: number | null;
