@@ -1,23 +1,28 @@
-import { getMockData } from "@/actions/get-mock-data"
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination"
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import { mockedProducts } from "@/mocks/products";
 
-const StockPagination = async () => {
-  const productsMock = await getMockData()
-
+const StockPagination = () => {
   return (
     <Pagination>
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious href="#" />
         </PaginationItem>
-        {Array.from({ length: productsMock.length }, (_, index) => {
+        {mockedProducts.map((prod, i) => {
           return (
-            <PaginationItem key={index + 1}>
-              <PaginationLink href="#">{index + 1}</PaginationLink>
+            <PaginationItem key={prod.id}>
+              {i <= 10 && <PaginationLink href="#">{i}</PaginationLink>}
             </PaginationItem>
-          )
-        })
-        }
+          );
+        })}
         <PaginationItem>
           <PaginationEllipsis />
         </PaginationItem>
@@ -26,6 +31,6 @@ const StockPagination = async () => {
         </PaginationItem>
       </PaginationContent>
     </Pagination>
-  )
-}
-export default StockPagination
+  );
+};
+export default StockPagination;

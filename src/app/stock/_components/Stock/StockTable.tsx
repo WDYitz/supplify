@@ -1,16 +1,29 @@
-import { getMockData } from "@/actions/get-mock-data";
+import { mockedProducts } from "@/mocks/products";
 import { ProductsTable } from "@/components/ProductsTable";
 import { productsColumns } from "@/components/ProductsTable/ProductsColumns";
 import ProductDoesNotExist from "../ProductDoesNotExist";
+import { Decimal } from "@prisma/client/runtime/library";
 
 const StockTable = async () => {
-  const productsMock = await getMockData()
 
-  if (productsMock.length <= 0) {
+  if (mockedProducts.length <= 0) {
     return <ProductDoesNotExist />
   }
 
-  return <ProductsTable columns={productsColumns} data={productsMock} />
+  // Ensure unitPrice is always a Decimal
+  const normalizedProducts = mockedProducts.map(product => ({
+    ...product,
+    unitPrice: typeof product.unitPrice === "number"
+      ? new Decimal(product.unitPrice)
+      : product.unitPrice
+  }));
+
+  return (
+    <ProductsTable
+      columns={productsColumns}
+      data={normalizedProducts}
+    />
+  )
 }
 
 export default StockTable
