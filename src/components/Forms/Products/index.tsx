@@ -37,9 +37,7 @@ const ProductsForm = () => {
 
   const form = useForm<ProductsFormType>({
     resolver: zodResolver(addNewProductSchema),
-    defaultValues: {
-
-    },
+    defaultValues: { },
   })
 
   const handleOpenForm = () => {

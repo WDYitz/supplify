@@ -1,10 +1,16 @@
 "use client";
 
+import dayjs from "dayjs";
+import "dayjs/locale/pt-br";
+import relativeTime from "dayjs/plugin/relativeTime";
 import { ProductsDetails } from "@/app/stock/_components/ProductDetails";
 import { Button } from "@/components/ui/button";
 import { Product } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { Edit, Trash } from "lucide-react";
+
+dayjs.extend(relativeTime);
+dayjs.locale("pt-br");
 
 export const productsColumns: ColumnDef<Product>[] = [
   {
@@ -73,11 +79,7 @@ export const productsColumns: ColumnDef<Product>[] = [
     accessorKey: "createdAt",
     header: "Adicionado há",
     cell: ({ row: { original: product } }) =>
-      new Date(product.createdAt).toLocaleDateString("pt-BR", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-      }),
+      dayjs().to(product.createdAt)
   },
   {
     accessorKey: "expirationDate",
@@ -95,7 +97,7 @@ export const productsColumns: ColumnDef<Product>[] = [
     cell: ({ row: { original: product } }) => {
       return (
         <div className="space-x-1">
-          {"R$ " + Number(product.unitPrice)}
+          {"R$ " + product.unitPrice}
         </div>
       );
     },

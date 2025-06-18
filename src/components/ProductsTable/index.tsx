@@ -32,8 +32,8 @@ export function ProductsTable<TData, TValue>({
   })
 
   return (
-    <div className="rounded-md border w-full h-full overflow-y-auto">
-      <Table>
+    <div className="rounded-md border w-full mt-4">
+      <Table className="w-full h-full">
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
