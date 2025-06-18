@@ -35,7 +35,7 @@ model Tags {
 }
 
 model Product {
-  id             Int                @id @default(autoincrement())
+  id             String             @id @default(uuid())
   name           String
   qtyInStock     Int                @map("qty_in_stock")
   productCode    String             @map("product_code")
@@ -49,6 +49,9 @@ model Product {
 
   Stock   Stock? @relation(fields: [stockId], references: [id])
   stockId Int?
+
+  @@index([name, productCode], name: "idx_product_name_code")
+  @@map("products")
 }
 
 enum ClassificationType {
