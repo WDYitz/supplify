@@ -1,3 +1,1 @@
-### Supplify - Gerencie os produtos de seu estoque, Produtos criados por TAG ...
-
-- USE 'CTRL + SHIFT + F' TO SEARCH FOR THE KEY WORD "REFACTOR COMPONENT"
+### Supplify - Inventory Management App
